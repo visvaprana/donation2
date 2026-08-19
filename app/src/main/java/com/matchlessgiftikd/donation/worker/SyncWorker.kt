@@ -13,7 +13,7 @@ class SyncWorker(appContext: Context, workerParams: WorkerParameters) : Coroutin
         val database = AppDatabase.getDatabase(applicationContext)
         val apiService = ApiService.create()
         
-        // Room DB থেকে অফলাইনে রাখা ডাটা আনুন
+        // Fetch offline unsynced data from Room DB
         val unsyncedPromised = database.promisedDonationDao().getUnsyncedPromisedDonations()
 
         for (item in unsyncedPromised) {
@@ -37,7 +37,7 @@ class SyncWorker(appContext: Context, workerParams: WorkerParameters) : Coroutin
 
                 val response = apiService.syncPromisedDonation(request)
                 if (response.isSuccessful && response.body()?.success == true) {
-                    // সফল হলে Room DB-তে Sync চিহ্নিত করুন
+                    // Mark as synced upon success
                     database.promisedDonationDao().markAsSynced(item.localId)
                 }
             } catch (e: Exception) {
