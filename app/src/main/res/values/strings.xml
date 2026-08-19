@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Donation IKD</string>
+    <string name="form_title">Donation IKD</string>
+    <string name="form_subtitle">Share your details and we’ll get in touch.</string>
+    <string name="name_label">Name</string>
+    <string name="mobile_label">Mobile</string>
+    <string name="address_label">Address</string>
+    <string name="submit">Confirm &amp; Save</string>
+    <string name="submitting">Submitting…</string>
+    <string name="required_field">Required</string>
+    <string name="default_success_message">Your information was submitted successfully.</string>
+    <string name="server_error_message">The server returned an error (%1$d). Please try again.</string>
+    <string name="network_error_message">Could not connect to the server. Check your connection and try again.</string>
+</resources>
