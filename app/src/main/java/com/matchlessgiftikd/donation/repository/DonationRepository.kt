@@ -33,7 +33,7 @@ class DonationRepository(private val context: Context) {
                 db.metaDataDao().insertDistricts(districts)
             }
         } catch (e: Exception) {
-            // Retains local cached database on network failure
+            // Keep existing cached database offline
         }
     }
 
