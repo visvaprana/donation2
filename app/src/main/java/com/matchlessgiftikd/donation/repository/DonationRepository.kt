@@ -10,6 +10,7 @@ import com.matchlessgiftikd.donation.data.local.AppDatabase
 import com.matchlessgiftikd.donation.data.local.DistrictEntity
 import com.matchlessgiftikd.donation.data.local.DonationEntity
 import com.matchlessgiftikd.donation.data.remote.ApiService
+import com.matchlessgiftikd.donation.data.remote.DistrictDto
 import com.matchlessgiftikd.donation.worker.SyncWorker
 
 class DonationRepository(private val context: Context) {
@@ -25,13 +26,14 @@ class DonationRepository(private val context: Context) {
         try {
             val response = apiService.fetchMetaData()
             if (response.isSuccessful && response.body() != null) {
-                val districts = response.body()!!.districts.map { district ->
-                    DistrictEntity(district.id, district.name)
+                val metaData = response.body()!!
+                val districts = metaData.districts.map { district: DistrictDto ->
+                    DistrictEntity(id = district.id, name = district.name)
                 }
                 db.metaDataDao().insertDistricts(districts)
             }
         } catch (e: Exception) {
-            // Offline scenario: keeps existing cached database
+            // Retains local cached database on network failure
         }
     }
 
