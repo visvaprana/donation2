@@ -7,8 +7,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.matchlessgift.donation.data.local.DonationEntity
-import com.matchlessgift.donation.repository.DonationRepository
+import com.matchlessgiftikd.donation.data.local.DonationEntity
+import com.matchlessgiftikd.donation.repository.DonationRepository
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
