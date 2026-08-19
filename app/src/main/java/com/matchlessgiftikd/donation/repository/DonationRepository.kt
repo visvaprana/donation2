@@ -1,8 +1,14 @@
 package com.matchlessgiftikd.donation.repository
 
 import android.content.Context
-import androidx.work.*
-import com.matchlessgiftikd.donation.data.local.*
+import androidx.work.Constraints
+import androidx.work.ExistingWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import com.matchlessgiftikd.donation.data.local.AppDatabase
+import com.matchlessgiftikd.donation.data.local.DistrictEntity
+import com.matchlessgiftikd.donation.data.local.DonationEntity
 import com.matchlessgiftikd.donation.data.remote.ApiService
 import com.matchlessgiftikd.donation.worker.SyncWorker
 
@@ -19,7 +25,6 @@ class DonationRepository(private val context: Context) {
         try {
             val response = apiService.fetchMetaData()
             if (response.isSuccessful && response.body() != null) {
-                // Resolved unresolved reference 'it' by using explicit lambda parameter
                 val districts = response.body()!!.districts.map { district ->
                     DistrictEntity(district.id, district.name)
                 }
