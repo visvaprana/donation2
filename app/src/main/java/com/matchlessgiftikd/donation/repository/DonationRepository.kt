@@ -18,10 +18,7 @@ class DonationRepository(private val context: Context) {
     private val apiService = ApiService.create()
 
     suspend fun saveDonation(donation: DonationEntity) {
-        // 1. Save locally to Room DB first
         db.donationDao().insertDonation(donation)
-
-        // 2. Schedule background WorkManager task as reliable backup
         scheduleSync()
     }
 
@@ -36,7 +33,7 @@ class DonationRepository(private val context: Context) {
                 db.metaDataDao().insertDistricts(districts)
             }
         } catch (e: Exception) {
-            // Keep existing cached database offline
+            e.printStackTrace()
         }
     }
 
@@ -49,14 +46,9 @@ class DonationRepository(private val context: Context) {
             .setConstraints(constraints)
             .build()
 
-        // CHANGED: Use REPLACE so new saves immediately enqueue a execution job
         WorkManager.getInstance(context).enqueueUniqueWork(
             "AutoDonationSync",
-            ExistingWorkPolicy.REPLACE, 
-            syncRequest
-        )
-    }
-}
+            ExistingWorkPolicy.REPLACE,
             syncRequest
         )
     }
