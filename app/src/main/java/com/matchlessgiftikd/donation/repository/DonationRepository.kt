@@ -1,10 +1,10 @@
-package com.matchlessgift.donation.repository
+package com.matchlessgiftikd.donation.repository
 
 import android.content.Context
 import androidx.work.*
-import com.matchlessgift.donation.data.local.*
-import com.matchlessgift.donation.data.remote.ApiService
-import com.matchlessgift.donation.worker.SyncWorker
+import com.matchlessgiftikd.donation.data.local.*
+import com.matchlessgiftikd.donation.data.remote.ApiService
+import com.matchlessgiftikd.donation.worker.SyncWorker
 
 class DonationRepository(private val context: Context) {
     private val db = AppDatabase.getDatabase(context)
@@ -19,7 +19,10 @@ class DonationRepository(private val context: Context) {
         try {
             val response = apiService.fetchMetaData()
             if (response.isSuccessful && response.body() != null) {
-                val districts = response.body()!!.districts.map { DistrictEntity(it.id, it.name) }
+                // Resolved unresolved reference 'it' by using explicit lambda parameter
+                val districts = response.body()!!.districts.map { district ->
+                    DistrictEntity(district.id, district.name)
+                }
                 db.metaDataDao().insertDistricts(districts)
             }
         } catch (e: Exception) {
