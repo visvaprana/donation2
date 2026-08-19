@@ -1,4 +1,4 @@
-package com.matchlessgift.donation.data.remote
+package com.matchlessgiftikd.donation.data.remote
 
 import com.google.gson.annotations.SerializedName
 import retrofit2.Response
@@ -33,6 +33,9 @@ data class PromisedDonationRequest(
 interface ApiService {
     @POST("app/promised-donations/store")
     suspend fun syncPromisedDonation(@Body request: PromisedDonationRequest): Response<ApiResponse>
+
+    @GET("api/meta-data")
+    suspend fun fetchMetaData(): Response<MetaDataResponse>
 
     companion object {
         private const val BASE_URL = "https://donation.matchlessgiftikd.com/"
