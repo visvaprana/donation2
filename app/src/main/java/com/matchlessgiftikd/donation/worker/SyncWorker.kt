@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.matchlessgiftikd.donation.data.local.AppDatabase
+import com.matchlessgiftikd.donation.data.local.PromisedDonationEntity
 import com.matchlessgiftikd.donation.data.remote.ApiService
 import com.matchlessgiftikd.donation.data.remote.PromisedDonationRequest
 
@@ -13,7 +14,7 @@ class SyncWorker(appContext: Context, workerParams: WorkerParameters) : Coroutin
         val database = AppDatabase.getDatabase(applicationContext)
         val apiService = ApiService.create()
 
-        val unsyncedPromised = database.promisedDonationDao().getUnsyncedPromisedDonations()
+        val unsyncedPromised: List<PromisedDonationEntity> = database.promisedDonationDao().getUnsyncedPromisedDonations()
 
         for (item in unsyncedPromised) {
             try {
@@ -28,7 +29,7 @@ class SyncWorker(appContext: Context, workerParams: WorkerParameters) : Coroutin
                     districtName = item.districtName,
                     thana = item.thana,
                     address = item.address,
-                    counsellors = item.counsellors.toIntOrNull(),
+                    counsellors = item.counsellors,
                     promiseDate = item.promiseDate,
                     note = item.note,
                     sendSms = 1
