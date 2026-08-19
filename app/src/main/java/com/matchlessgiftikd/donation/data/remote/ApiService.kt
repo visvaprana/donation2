@@ -13,6 +13,15 @@ data class ApiResponse(
     val message: String
 )
 
+data class DistrictDto(
+    val id: Int,
+    val name: String
+)
+
+data class MetaDataResponse(
+    val districts: List<DistrictDto>
+)
+
 data class PromisedDonationRequest(
     @SerializedName("donar_name") val donarName: String,
     @SerializedName("donar_mobile") val donarMobile: String,
@@ -47,13 +56,16 @@ data class DonationRequest(
 )
 
 interface ApiService {
-    @POST("api/donations/store")
+    // Aligned with web.php: Route::post('/app/donations/store', ...)
+    @POST("app/donations/store")
     suspend fun syncDonation(@Body request: DonationRequest): Response<ApiResponse>
 
-    @POST("api/promised-donations/store")
+    // Aligned with web.php: Route::post('/app/promised-donations/store', ...)
+    @POST("app/promised-donations/store")
     suspend fun syncPromisedDonation(@Body request: PromisedDonationRequest): Response<ApiResponse>
 
-    @GET("api/meta-data")
+    // Aligned with web.php: Route::get('/app/promised-donations/meta-data', ...)
+    @GET("app/promised-donations/meta-data")
     suspend fun fetchMetaData(): Response<MetaDataResponse>
 
     companion object {
