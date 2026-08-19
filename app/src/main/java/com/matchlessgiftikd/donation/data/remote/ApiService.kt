@@ -30,8 +30,27 @@ data class PromisedDonationRequest(
     @SerializedName("send_sms") val sendSms: Int = 1
 )
 
+data class DonationRequest(
+    @SerializedName("donar_name") val donarName: String,
+    @SerializedName("donar_mobile") val donarMobile: String,
+    val amount: Double,
+    val purpose: String,
+    @SerializedName("donation_type") val donationType: String,
+    val district: Int,
+    @SerializedName("district_name") val districtName: String,
+    val thana: String,
+    val address: String?,
+    val counsellors: Int?,
+    @SerializedName("deposit_date") val depositDate: String,
+    val note: String?,
+    @SerializedName("send_sms") val sendSms: Int = 1
+)
+
 interface ApiService {
-    @POST("app/promised-donations/store")
+    @POST("api/donations/store")
+    suspend fun syncDonation(@Body request: DonationRequest): Response<ApiResponse>
+
+    @POST("api/promised-donations/store")
     suspend fun syncPromisedDonation(@Body request: PromisedDonationRequest): Response<ApiResponse>
 
     @GET("api/meta-data")
