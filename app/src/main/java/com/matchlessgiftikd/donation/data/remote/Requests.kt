@@ -1,4 +1,4 @@
-package com.matchlessgift.donation.data.remote
+package com.matchlessgiftikd.donation.data.remote
 
 import com.google.gson.annotations.SerializedName
 
