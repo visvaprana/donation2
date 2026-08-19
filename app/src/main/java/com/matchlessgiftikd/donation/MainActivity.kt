@@ -2,7 +2,6 @@ package com.matchlessgiftikd.donation
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -59,43 +58,30 @@ class MainActivity : AppCompatActivity() {
             ).show()
         }
 
-        // Default Purposes
+        // Static Purpose Options
         val defaultPurposes = listOf("সাধারণ প্রণামী", "ভোগ প্রণামী", "অন্যান্য প্রনামী")
         val purposeAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, defaultPurposes)
         purposeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spPurpose.adapter = purposeAdapter
 
-        // Sync Metadata on App Launch & Populate District Dropdown
+        // Static District & Thana Setup
+        val districts = listOf("Dhaka", "Rajshahi", "Chittagong", "Sylhet")
+        val distAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, districts)
+        distAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spDistrict.adapter = distAdapter
+
+        val thanas = listOf("Godagari", "Boalia", "Rajpara", "Motihar")
+        val thanaAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, thanas)
+        thanaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spThana.adapter = thanaAdapter
+
+        // Background sync schedule
         lifecycleScope.launch {
-            repository.syncMetaData()
-            repository.scheduleSync()
-
-            val districtList = repository.getDistrictsFromDb()
-            if (districtList.isNotEmpty()) {
-                val distNames = districtList.map { it.name }
-                val distAdapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_spinner_item, distNames)
-                distAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                spDistrict.adapter = distAdapter
-
-                // On District Select -> Load Thanas dynamically
-                spDistrict.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                        val selectedDistrict = districtList[position]
-                        lifecycleScope.launch {
-                            val thanaList = repository.getThanasFromDb(selectedDistrict.id)
-                            val thanaNames = thanaList.map { it.name }
-                            val thanaAdapter = ArrayAdapter(
-                                this@MainActivity,
-                                android.R.layout.simple_spinner_item,
-                                thanaNames
-                            )
-                            thanaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                            spThana.adapter = thanaAdapter
-                        }
-                    }
-
-                    override fun onNothingSelected(parent: AdapterView<*>?) {}
-                }
+            try {
+                repository.syncMetaData()
+                repository.scheduleSync()
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
 
@@ -113,7 +99,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             val selectedDistrict = spDistrict.selectedItem?.toString() ?: "Dhaka"
-            val selectedThana = spThana.selectedItem?.toString() ?: "Default Thana"
+            val selectedThana = spThana.selectedItem?.toString() ?: "Godagari"
             val selectedPurpose = spPurpose.selectedItem?.toString() ?: "সাধারণ প্রণামী"
 
             val donationType = if (rgDonationType.checkedRadioButtonId == R.id.rbBank) "bank" else "cash"
