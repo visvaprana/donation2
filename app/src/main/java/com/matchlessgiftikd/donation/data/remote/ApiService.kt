@@ -1,7 +1,6 @@
 package com.matchlessgiftikd.donation.data.remote
 
 import com.google.gson.annotations.SerializedName
-
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,18 +9,17 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-
 // ============================================================
-// GENERIC API RESPONSE
+// GENERIC RESPONSE
 // ============================================================
 
 data class ApiResponse(
 
-    @SerializedName("success")
-    val success: Boolean = false,
-
     @SerializedName("status")
     val status: String? = null,
+
+    @SerializedName("success")
+    val success: Boolean = false,
 
     @SerializedName("message")
     val message: String? = null,
@@ -30,9 +28,8 @@ data class ApiResponse(
     val id: Long? = null
 )
 
-
 // ============================================================
-// REGULAR DONATION REQUEST
+// DONATION REQUEST
 // ============================================================
 
 data class DonationRequest(
@@ -95,9 +92,8 @@ data class DonationRequest(
     val sendSms: Int = 1
 )
 
-
 // ============================================================
-// PROMISED / COMMITTED DONATION REQUEST
+// PROMISED DONATION REQUEST
 // ============================================================
 
 data class PromisedDonationRequest(
@@ -157,9 +153,8 @@ data class PromisedDonationRequest(
     val sendSms: Int = 1
 )
 
-
 // ============================================================
-// META DATA RESPONSE
+// META DATA
 // ============================================================
 
 data class MetaDataResponse(
@@ -177,11 +172,6 @@ data class MetaDataResponse(
     val donationTypes: List<String> = emptyList()
 )
 
-
-// ============================================================
-// DISTRICT
-// ============================================================
-
 data class DistrictDto(
 
     @SerializedName("id")
@@ -190,11 +180,6 @@ data class DistrictDto(
     @SerializedName("name")
     val name: String
 )
-
-
-// ============================================================
-// THANA
-// ============================================================
 
 data class ThanaDto(
 
@@ -207,160 +192,6 @@ data class ThanaDto(
     @SerializedName("name")
     val name: String
 )
-
-
-// ============================================================
-// DONATION LIST RESPONSE
-// ============================================================
-
-data class DonationListResponse(
-
-    @SerializedName("status")
-    val status: String? = null,
-
-    @SerializedName("total_amount")
-    val totalAmount: Double = 0.0,
-
-    @SerializedName("donations")
-    val donations: DonationPagination? = null
-)
-
-
-// ============================================================
-// DONATION PAGINATION
-// ============================================================
-
-data class DonationPagination(
-
-    @SerializedName("current_page")
-    val currentPage: Int = 1,
-
-    @SerializedName("last_page")
-    val lastPage: Int = 1,
-
-    @SerializedName("per_page")
-    val perPage: Int = 50,
-
-    @SerializedName("total")
-    val total: Int = 0,
-
-    @SerializedName("data")
-    val data: List<DonationListItem> = emptyList()
-)
-
-
-// ============================================================
-// DONATION LIST ITEM
-// ============================================================
-
-data class DonationListItem(
-
-    @SerializedName("id")
-    val id: Long? = null,
-
-    @SerializedName("donar_name")
-    val donorName: String? = null,
-
-    @SerializedName("donar_mobile")
-    val donorMobile: String? = null,
-
-    @SerializedName("amount")
-    val amount: Double = 0.0,
-
-    @SerializedName("type")
-    val type: String? = null,
-
-    @SerializedName("deposit_date")
-    val depositDate: String? = null,
-
-    @SerializedName("purpose")
-    val purpose: String? = null
-)
-
-
-// ============================================================
-// PROMISED DONATION LIST RESPONSE
-// ============================================================
-
-data class PromisedDonationListResponse(
-
-    @SerializedName("status")
-    val status: String? = null,
-
-    @SerializedName("is_admin")
-    val isAdmin: Boolean = false,
-
-    @SerializedName("total_amount")
-    val totalAmount: Double = 0.0,
-
-    @SerializedName("total_paid_from_donations")
-    val totalPaidFromDonations: Double = 0.0,
-
-    @SerializedName("total_paid_from_promised")
-    val totalPaidFromPromised: Double = 0.0,
-
-    @SerializedName("total_paid_overall")
-    val totalPaidOverall: Double = 0.0,
-
-    @SerializedName("total_due_overall")
-    val totalDueOverall: Double = 0.0,
-
-    @SerializedName("promises")
-    val promises: PromisedPagination? = null
-)
-
-
-// ============================================================
-// PROMISED DONATION PAGINATION
-// ============================================================
-
-data class PromisedPagination(
-
-    @SerializedName("current_page")
-    val currentPage: Int = 1,
-
-    @SerializedName("last_page")
-    val lastPage: Int = 1,
-
-    @SerializedName("total")
-    val total: Int = 0,
-
-    @SerializedName("data")
-    val data: List<PromisedDonationListItem> = emptyList()
-)
-
-
-// ============================================================
-// PROMISED DONATION LIST ITEM
-// ============================================================
-
-data class PromisedDonationListItem(
-
-    @SerializedName("id")
-    val id: Long? = null,
-
-    @SerializedName("donar_name")
-    val donorName: String? = null,
-
-    @SerializedName("donar_mobile")
-    val donorMobile: String? = null,
-
-    @SerializedName("amount")
-    val amount: Double = 0.0,
-
-    @SerializedName("payAmount")
-    val payAmountWrong: Double? = null,
-
-    @SerializedName("pay_amount")
-    val payAmount: Double = 0.0,
-
-    @SerializedName("type")
-    val type: String? = null,
-
-    @SerializedName("promise_date")
-    val promiseDate: String? = null
-)
-
 
 // ============================================================
 // DONOR SUMMARY
@@ -390,7 +221,6 @@ data class DonorSummaryResponse(
     val data: List<DonorSummaryItem> = emptyList()
 )
 
-
 data class DonorSummaryItem(
 
     @SerializedName("type")
@@ -409,12 +239,148 @@ data class DonorSummaryItem(
     val difference: Double? = null,
 
     @SerializedName("donar_mobile")
-    val donorMobile: String? = null,
+    val donarMobile: String? = null,
 
     @SerializedName("donar_name")
-    val donorName: String? = null
+    val donarName: String? = null
 )
 
+// ============================================================
+// PAGINATED DONATION RESPONSE
+// ============================================================
+
+data class DonationListResponse(
+
+    @SerializedName("status")
+    val status: String? = null,
+
+    @SerializedName("total_amount")
+    val totalAmount: Double = 0.0,
+
+    @SerializedName("donations")
+    val donations: DonationPagination? = null
+)
+
+data class DonationPagination(
+
+    @SerializedName("current_page")
+    val currentPage: Int = 1,
+
+    @SerializedName("last_page")
+    val lastPage: Int = 1,
+
+    @SerializedName("per_page")
+    val perPage: Int = 50,
+
+    @SerializedName("total")
+    val total: Int = 0,
+
+    @SerializedName("data")
+    val data: List<DonationApiItem> = emptyList()
+)
+
+data class DonationApiItem(
+
+    @SerializedName("id")
+    val id: Long? = null,
+
+    @SerializedName("dev_id")
+    val devId: String? = null,
+
+    @SerializedName("donar_name")
+    val donarName: String? = null,
+
+    @SerializedName("donar_mobile")
+    val donarMobile: String? = null,
+
+    @SerializedName("amount")
+    val amount: Double = 0.0,
+
+    @SerializedName("type")
+    val type: String? = null,
+
+    @SerializedName("deposit_date")
+    val depositDate: String? = null,
+
+    @SerializedName("promise_token")
+    val promiseToken: Int = 0
+)
+
+// ============================================================
+// PROMISED DONATION LIST
+// ============================================================
+
+data class PromisedDonationListResponse(
+
+    @SerializedName("status")
+    val status: String? = null,
+
+    @SerializedName("is_admin")
+    val isAdmin: Boolean = false,
+
+    @SerializedName("total_amount")
+    val totalAmount: Double = 0.0,
+
+    @SerializedName("total_paid_from_donations")
+    val totalPaidFromDonations: Double = 0.0,
+
+    @SerializedName("total_paid_from_promised")
+    val totalPaidFromPromised: Double = 0.0,
+
+    @SerializedName("total_paid_overall")
+    val totalPaidOverall: Double = 0.0,
+
+    @SerializedName("total_due_overall")
+    val totalDueOverall: Double = 0.0,
+
+    @SerializedName("promises")
+    val promises: PromisedPagination? = null
+)
+
+data class PromisedPagination(
+
+    @SerializedName("current_page")
+    val currentPage: Int = 1,
+
+    @SerializedName("last_page")
+    val lastPage: Int = 1,
+
+    @SerializedName("per_page")
+    val perPage: Int = 500,
+
+    @SerializedName("total")
+    val total: Int = 0,
+
+    @SerializedName("data")
+    val data: List<PromisedApiItem> = emptyList()
+)
+
+data class PromisedApiItem(
+
+    @SerializedName("id")
+    val id: Long? = null,
+
+    @SerializedName("dev_id")
+    val devId: String? = null,
+
+    @SerializedName("donar_name")
+    val donarName: String? = null,
+
+    @SerializedName("donar_mobile")
+    val donarMobile: String? = null,
+
+    @SerializedName("amount")
+    val amount: Double = 0.0,
+
+    @SerializedName("pay_amount")
+    val payAmount: Double = 0.0,
+
+    @SerializedName("type")
+    val type: String? = null,
+
+    @SerializedName("promise_date")
+    val promiseDate: String? = null
+)
 
 // ============================================================
 // API SERVICE
@@ -422,98 +388,78 @@ data class DonorSummaryItem(
 
 interface ApiService {
 
-    // ========================================================
-    // REGULAR DONATION
-    // ========================================================
+    // ---------------------------------------------------------
+    // AUTH
+    // ---------------------------------------------------------
+
+    @POST("app/login")
+    suspend fun login(
+        @Body request: Map<String, String>
+    ): Response<Map<String, Any>>
+
+    // ---------------------------------------------------------
+    // STORE
+    // ---------------------------------------------------------
 
     @POST("app/donations/store")
     suspend fun syncDonation(
         @Body request: DonationRequest
     ): Response<ApiResponse>
 
-
-    // ========================================================
-    // PROMISED / COMMITTED DONATION
-    // ========================================================
-
     @POST("app/promised-donations/store")
     suspend fun syncPromisedDonation(
         @Body request: PromisedDonationRequest
     ): Response<ApiResponse>
 
-
-    // ========================================================
+    // ---------------------------------------------------------
     // META DATA
-    // ========================================================
+    // ---------------------------------------------------------
 
     @GET("app/promised-donations/meta-data")
     suspend fun fetchMetaData():
             Response<MetaDataResponse>
 
-
-    // ========================================================
-    // DONATIONS LIST
-    // ========================================================
-
-    @GET("app/donations/list")
-    suspend fun fetchDonations(
-        @Query("donar_name")
-        donorName: String? = null,
-
-        @Query("from_date")
-        fromDate: String? = null,
-
-        @Query("to_date")
-        toDate: String? = null,
-
-        @Query("type")
-        type: String? = null,
-
-        @Query("page")
-        page: Int = 1
-    ): Response<DonationListResponse>
-
-
-    // ========================================================
-    // PROMISED DONATIONS LIST
-    // ========================================================
-
-    @GET("app/promised-donations")
-    suspend fun fetchPromisedDonations(
-        @Query("donar_name")
-        donorName: String? = null,
-
-        @Query("from_date")
-        fromDate: String? = null,
-
-        @Query("to_date")
-        toDate: String? = null,
-
-        @Query("type")
-        type: String? = null,
-
-        @Query("page")
-        page: Int = 1
-    ): Response<PromisedDonationListResponse>
-
-
-    // ========================================================
+    // ---------------------------------------------------------
     // DONOR SUMMARY
-    // ========================================================
+    // ---------------------------------------------------------
 
     @GET("app/donor-summary")
     suspend fun fetchDonorSummary(
-        @Query("donar_mobile")
-        donarMobile: String,
-
-        @Query("donar_name")
-        donarName: String? = null
+        @Query("donar_mobile") donarMobile: String,
+        @Query("donar_name") donarName: String? = null
     ): Response<DonorSummaryResponse>
 
+    // ---------------------------------------------------------
+    // DONATION LIST
+    // ---------------------------------------------------------
 
-    // ========================================================
+    @GET("app/donations/list")
+    suspend fun fetchDonations(
+        @Query("page") page: Int = 1,
+        @Query("donar_name") donorName: String? = null,
+        @Query("from_date") fromDate: String? = null,
+        @Query("to_date") toDate: String? = null,
+        @Query("type") type: String? = null,
+        @Query("collector_id") collectorId: Int? = null
+    ): Response<DonationListResponse>
+
+    // ---------------------------------------------------------
+    // PROMISED DONATION LIST
+    // ---------------------------------------------------------
+
+    @GET("app/promised-donations")
+    suspend fun fetchPromisedDonations(
+        @Query("page") page: Int = 1,
+        @Query("donar_name") donorName: String? = null,
+        @Query("from_date") fromDate: String? = null,
+        @Query("to_date") toDate: String? = null,
+        @Query("type") type: String? = null,
+        @Query("counsellor_id") counsellorId: Int? = null
+    ): Response<PromisedDonationListResponse>
+
+    // ---------------------------------------------------------
     // RETROFIT
-    // ========================================================
+    // ---------------------------------------------------------
 
     companion object {
 
