@@ -116,49 +116,63 @@ class DonationRepository(
     // META DATA
     // ============================================================
 
-    suspend fun syncMetaData(): Boolean {
+  suspend fun syncMetaData(): Boolean {
 
-        return try {
+    return try {
 
-            val response =
-                apiService.fetchMetaData()
+        val response = apiService.fetchMetaData()
 
-            if (
-                response.isSuccessful &&
-                response.body() != null
-            ) {
+        if (response.isSuccessful && response.body() != null) {
 
-                val metaData =
-                    response.body()!!
+            val metaData = response.body()!!
 
-                val districts =
-                    metaData.districts.map {
-                        district: DistrictDto ->
+            // ------------------------------------------------
+            // SAVE DISTRICTS
+            // ------------------------------------------------
 
-                        DistrictEntity(
-                            id = district.id,
-                            name = district.name
-                        )
-                    }
+            val districts = metaData.districts.map { district ->
 
-                db.metaDataDao()
-                    .insertDistricts(districts)
-
-                true
-
-            } else {
-
-                false
+                DistrictEntity(
+                    id = district.id,
+                    name = district.name
+                )
             }
 
-        } catch (e: Exception) {
+            db.metaDataDao()
+                .insertDistricts(districts)
 
-            e.printStackTrace()
+
+            // ------------------------------------------------
+            // SAVE THANAS
+            // ------------------------------------------------
+
+            val thanas = metaData.thanas.map { thana ->
+
+                ThanaEntity(
+                    id = thana.id,
+                    districtId = thana.districtId,
+                    name = thana.name
+                )
+            }
+
+            db.metaDataDao()
+                .insertThanas(thanas)
+
+
+            true
+
+        } else {
 
             false
         }
-    }
 
+    } catch (e: Exception) {
+
+        e.printStackTrace()
+
+        false
+    }
+}
 
     // ============================================================
     // WORKMANAGER
