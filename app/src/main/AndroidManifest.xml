@@ -1,34 +1,50 @@
-<application
-    ...>
+<?xml version="1.0" encoding="utf-8"?>
 
-<activity
-    android:name=".DashboardActivity"
-    android:exported="true">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-    </intent-filter>
+    <application
+        android:allowBackup="true"
+        android:label="ISKCON Kheturi Dham"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Donation">
 
-</activity>
+        <!-- Dashboard / Home -->
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="true">
 
-<activity
-    android:name=".DonationListActivity"
-    android:exported="false" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
-<activity
-    android:name=".PromisedDonationListActivity"
-    android:exported="false" />
+        </activity>
 
-<activity
-    android:name=".DonorHistoryActivity"
-    android:exported="false" />
+        <!-- Regular Donation -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
 
-<activity
-    android:name=".PromisedDonationActivity"
-    android:exported="false" />
+        <!-- Promised Donation -->
+        <activity
+            android:name=".PromisedDonationActivity"
+            android:exported="false" />
 
-<activity
-    android:name=".MainActivity"
-    android:exported="false" />
-</application>
+        <!-- Donation List -->
+        <activity
+            android:name=".DonationListActivity"
+            android:exported="false" />
+
+        <!-- Promised Donation List -->
+        <activity
+            android:name=".PromisedDonationListActivity"
+            android:exported="false" />
+
+        <!-- Donor History -->
+        <activity
+            android:name=".DonorHistoryActivity"
+            android:exported="false" />
+
+    </application>
+
+</manifest>
