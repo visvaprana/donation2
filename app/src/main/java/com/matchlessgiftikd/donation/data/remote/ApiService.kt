@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
+import retrofit2.http.Query
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -201,6 +201,15 @@ interface ApiService {
             Response<MetaDataResponse>
 
 
+    @GET("app/donor-summary")
+    suspend fun fetchDonorSummary(
+        @Query("mobile") mobile: String
+    ): Response<DonorSummaryResponse>
+
+
+
+
+    
     // ----------------------------------------------------------
     // RETROFIT
     // ----------------------------------------------------------
