@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- STATUS -->
+
+        <TextView
+            android:id="@+id/tvPromiseStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status: Ready"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+
+        <!-- DEVOTEE ID -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Donor ID" />
+
+        <EditText
+            android:id="@+id/etPromiseDevId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Devotee ID"
+            android:inputType="text" />
+
+
+        <!-- DONOR NAME -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Donor Name *"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:id="@+id/etPromiseDonorName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Donor Name"
+            android:inputType="textPersonName" />
+
+
+        <!-- MOBILE -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile Number *"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:id="@+id/etPromiseMobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mobile Number"
+            android:inputType="phone" />
+
+
+        <!-- ADDRESS -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:id="@+id/etPromiseAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address"
+            android:lines="2"
+            android:gravity="top" />
+
+
+        <!-- DISTRICT -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="District *"
+            android:layout_marginTop="10dp" />
+
+        <Spinner
+            android:id="@+id/spPromiseDistrict"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp" />
+
+
+        <!-- THANA -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upazila / Thana *"
+            android:layout_marginTop="10dp" />
+
+        <Spinner
+            android:id="@+id/spPromiseThana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp" />
+
+
+        <!-- TOTAL COMMITTED AMOUNT -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Committed Amount *"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:id="@+id/etPromiseAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Total committed amount"
+            android:inputType="numberDecimal" />
+
+
+        <!-- INITIAL PAYMENT -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount Paid Now"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:id="@+id/etPromisePayAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Amount paid now"
+            android:inputType="numberDecimal" />
+
+
+        <!-- DONATION TYPE -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Donation Type"
+            android:layout_marginTop="10dp" />
+
+        <RadioGroup
+            android:id="@+id/rgPromiseDonationType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbPromiseCash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cash"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rbPromiseBank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bank"
+                android:layout_marginStart="20dp" />
+
+        </RadioGroup>
+
+
+        <!-- PURPOSE -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Purpose"
+            android:layout_marginTop="10dp" />
+
+        <Spinner
+            android:id="@+id/spPromisePurpose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp" />
+
+
+        <!-- PROMISE DATE -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Promise Date"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:id="@+id/etPromiseDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="YYYY-MM-DD"
+            android:focusable="false"
+            android:clickable="true" />
+
+
+        <!-- NOTE -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Note"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:id="@+id/etPromiseNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Additional details"
+            android:lines="2"
+            android:gravity="top" />
+
+
+        <!-- SMS -->
+
+        <CheckBox
+            android:id="@+id/cbPromiseSendSms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send SMS"
+            android:checked="true"
+            android:layout_marginTop="10dp" />
+
+
+        <!-- SAVE -->
+
+        <Button
+            android:id="@+id/btnSavePromise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Promised Donation"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp" />
+
+    </LinearLayout>
+
+</ScrollView>
