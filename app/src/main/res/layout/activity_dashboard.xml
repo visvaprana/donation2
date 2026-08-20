@@ -11,6 +11,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- HEADER -->
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,37 +30,73 @@
             android:gravity="center"
             android:paddingBottom="20dp"/>
 
+
+        <!-- SYNC STATUS -->
+
         <TextView
             android:id="@+id/tvPending"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pending synchronization: 0"
             android:textStyle="bold"
-            android:padding="12dp"/>
+            android:gravity="center"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"/>
+
+
+        <!-- NEW DONATION -->
 
         <Button
             android:id="@+id/btnDonation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="💰 Donation"/>
+            android:text="💰 Donation"
+            android:minHeight="52dp"
+            android:layout_marginBottom="8dp"/>
+
+
+        <!-- NEW PROMISED DONATION -->
 
         <Button
             android:id="@+id/btnPromised"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🤝 Promised Donation"/>
+            android:text="🤝 Promised Donation"
+            android:minHeight="52dp"
+            android:layout_marginBottom="8dp"/>
+
+
+        <!-- DONATION LIST -->
 
         <Button
             android:id="@+id/btnDonations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="📋 Donations"/>
+            android:text="📋 Donations"
+            android:minHeight="52dp"
+            android:layout_marginBottom="8dp"/>
+
+
+        <!-- PROMISED DONATION LIST -->
 
         <Button
             android:id="@+id/btnPromisedList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="📜 Promised Donations"/>
+            android:text="📜 Promised Donations"
+            android:minHeight="52dp"
+            android:layout_marginBottom="8dp"/>
+
+
+        <!-- DONOR HISTORY -->
+
+        <Button
+            android:id="@+id/btnDonorHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👤 Donor History"
+            android:minHeight="52dp"
+            android:layout_marginBottom="8dp"/>
 
     </LinearLayout>
 
