@@ -22,7 +22,12 @@ class DashboardActivity : AppCompatActivity() {
 
         repository = DonationRepository(this)
 
-        tvPending = findViewById(R.id.tvPending)
+        // ----------------------------------------------------
+        // VIEWS
+        // ----------------------------------------------------
+
+        tvPending =
+            findViewById(R.id.tvPending)
 
         val btnDonation =
             findViewById<Button>(R.id.btnDonation)
@@ -35,6 +40,10 @@ class DashboardActivity : AppCompatActivity() {
 
         val btnPromisedList =
             findViewById<Button>(R.id.btnPromisedList)
+
+        val btnDonorHistory =
+            findViewById<Button>(R.id.btnDonorHistory)
+
 
         // ----------------------------------------------------
         // NEW REGULAR DONATION
@@ -50,6 +59,7 @@ class DashboardActivity : AppCompatActivity() {
             )
         }
 
+
         // ----------------------------------------------------
         // NEW PROMISED / COMMITTED DONATION
         // ----------------------------------------------------
@@ -64,8 +74,9 @@ class DashboardActivity : AppCompatActivity() {
             )
         }
 
+
         // ----------------------------------------------------
-        // REGULAR DONATION LIST
+        // DONATION LIST
         // ----------------------------------------------------
 
         btnDonations.setOnClickListener {
@@ -77,6 +88,7 @@ class DashboardActivity : AppCompatActivity() {
                 )
             )
         }
+
 
         // ----------------------------------------------------
         // PROMISED DONATION LIST
@@ -92,14 +104,45 @@ class DashboardActivity : AppCompatActivity() {
             )
         }
 
+
+        // ----------------------------------------------------
+        // DONOR HISTORY
+        // ----------------------------------------------------
+
+        btnDonorHistory.setOnClickListener {
+
+            startActivity(
+                Intent(
+                    this,
+                    DonorHistoryActivity::class.java
+                )
+            )
+        }
+
+
+        // ----------------------------------------------------
+        // INITIAL SYNC STATUS
+        // ----------------------------------------------------
+
         updatePendingCount()
     }
 
+
+    // --------------------------------------------------------
+    // REFRESH WHEN RETURNING TO DASHBOARD
+    // --------------------------------------------------------
+
     override fun onResume() {
+
         super.onResume()
 
         updatePendingCount()
     }
+
+
+    // --------------------------------------------------------
+    // PENDING SYNCHRONIZATION COUNT
+    // --------------------------------------------------------
 
     private fun updatePendingCount() {
 
