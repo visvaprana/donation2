@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ISKCON KHETURI DHAM\nDonation Management"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:paddingBottom="20dp" />
+
+        <TextView
+            android:id="@+id/tvPending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pending Sync: 0"
+            android:textSize="18sp"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/tvDonationTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Donation Total: 0"
+            android:textSize="18sp"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/tvPromisedTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Committed Total: 0"
+            android:textSize="18sp"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/tvPromisedPaid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Committed Paid: 0"
+            android:textSize="18sp"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/tvPromisedDue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Committed Due: 0"
+            android:textSize="18sp"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/btnDonation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💰 Donation"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/btnPromised"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🤝 Promised Donation" />
+
+        <Button
+            android:id="@+id/btnDonationList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📋 Donations" />
+
+        <Button
+            android:id="@+id/btnPromisedList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📜 Promised Donations" />
+
+        <Button
+            android:id="@+id/btnDonorHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👤 Donor History" />
+
+    </LinearLayout>
+
+</ScrollView>
