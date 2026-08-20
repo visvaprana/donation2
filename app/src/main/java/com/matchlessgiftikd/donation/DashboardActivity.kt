@@ -13,6 +13,8 @@ class DashboardActivity : AppCompatActivity() {
 
     private lateinit var repository: DonationRepository
 
+    private lateinit var tvPending: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,7 +22,7 @@ class DashboardActivity : AppCompatActivity() {
 
         repository = DonationRepository(this)
 
-        val tvPending = findViewById<TextView>(R.id.tvPending)
+        tvPending = findViewById(R.id.tvPending)
 
         val btnDonation =
             findViewById<Button>(R.id.btnDonation)
@@ -34,24 +36,40 @@ class DashboardActivity : AppCompatActivity() {
         val btnPromisedList =
             findViewById<Button>(R.id.btnPromisedList)
 
-        btnDonation.setOnClickListener {
-            startActivity(
-                Intent(this, MainActivity::class.java)
-            )
-        }
+        // ----------------------------------------------------
+        // NEW REGULAR DONATION
+        // ----------------------------------------------------
 
-        btnPromised.setOnClickListener {
-            // We will connect the promised donation form here.
-            // For now use the promised list screen.
+        btnDonation.setOnClickListener {
+
             startActivity(
                 Intent(
                     this,
-                    PromisedDonationListActivity::class.java
+                    MainActivity::class.java
                 )
             )
         }
 
+        // ----------------------------------------------------
+        // NEW PROMISED / COMMITTED DONATION
+        // ----------------------------------------------------
+
+        btnPromised.setOnClickListener {
+
+            startActivity(
+                Intent(
+                    this,
+                    PromisedDonationActivity::class.java
+                )
+            )
+        }
+
+        // ----------------------------------------------------
+        // REGULAR DONATION LIST
+        // ----------------------------------------------------
+
         btnDonations.setOnClickListener {
+
             startActivity(
                 Intent(
                     this,
@@ -60,7 +78,12 @@ class DashboardActivity : AppCompatActivity() {
             )
         }
 
+        // ----------------------------------------------------
+        // PROMISED DONATION LIST
+        // ----------------------------------------------------
+
         btnPromisedList.setOnClickListener {
+
             startActivity(
                 Intent(
                     this,
@@ -69,29 +92,32 @@ class DashboardActivity : AppCompatActivity() {
             )
         }
 
-        lifecycleScope.launch {
-
-            val pending =
-                repository.getTotalUnsyncedCount()
-
-            tvPending.text =
-                "Pending synchronization: $pending"
-        }
+        updatePendingCount()
     }
 
     override fun onResume() {
         super.onResume()
 
-        val tvPending =
-            findViewById<TextView>(R.id.tvPending)
+        updatePendingCount()
+    }
+
+    private fun updatePendingCount() {
 
         lifecycleScope.launch {
 
-            val pending =
-                repository.getTotalUnsyncedCount()
+            try {
 
-            tvPending.text =
-                "Pending synchronization: $pending"
+                val pending =
+                    repository.getTotalUnsyncedCount()
+
+                tvPending.text =
+                    "Pending synchronization: $pending"
+
+            } catch (e: Exception) {
+
+                tvPending.text =
+                    "Pending synchronization: --"
+            }
         }
     }
 }
