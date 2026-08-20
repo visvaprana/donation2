@@ -90,6 +90,9 @@ data class DonationRequest(
     @SerializedName("process_committed_with_sms")
     val processCommittedWithSms: Int? = null,
 
+    @SerializedName("promise_token")
+val promiseToken: Int = 0,
+
     @SerializedName("send_sms")
     val sendSms: Int = 1
 )
