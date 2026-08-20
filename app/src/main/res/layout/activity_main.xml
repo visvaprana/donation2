@@ -1,181 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header -->
 
         <TextView
-            android:id="@+id/tvStatus"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Status: Ready"
+            android:text="ISKCON KHETURI DHAM"
+            android:textSize="24sp"
             android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Donation Management"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Donation -->
+
+        <Button
+            android:id="@+id/btnDonation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💰  Donation"
+            android:textSize="17sp"
+            android:minHeight="56dp"
             android:layout_marginBottom="12dp" />
 
-        <!-- Devotee / Donor ID -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Donor ID" />
-        <EditText
-            android:id="@+id/etDevId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Devotee ID"
-            android:inputType="text" />
+        <!-- Promised Donation -->
 
-        <!-- Donor Name -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Donor Name *"
-            android:layout_marginTop="8dp" />
-        <EditText
-            android:id="@+id/etDonorName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Donor Name" />
-
-        <!-- Mobile Number -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mobile Number *"
-            android:layout_marginTop="8dp" />
-        <EditText
-            android:id="@+id/etMobile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Mobile Number"
-            android:inputType="phone" />
-
-        <!-- Address -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Address"
-            android:layout_marginTop="8dp" />
-        <EditText
-            android:id="@+id/etAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Address"
-            android:lines="2" />
-
-        <!-- District Spinner -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="District *"
-            android:layout_marginTop="8dp" />
-        <Spinner
-            android:id="@+id/spDistrict"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp" />
-
-        <!-- Thana Spinner -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Upazila / Thana *"
-            android:layout_marginTop="8dp" />
-        <Spinner
-            android:id="@+id/spThana"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp" />
-
-        <!-- Amount -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Amount *"
-            android:layout_marginTop="8dp" />
-        <EditText
-            android:id="@+id/etAmount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Amount"
-            android:inputType="numberDecimal" />
-
-        <!-- Donation Type (Cash / Bank) -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Donation Type"
-            android:layout_marginTop="8dp" />
-        <RadioGroup
-            android:id="@+id/rgDonationType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <RadioButton
-                android:id="@+id/rbCash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cash"
-                android:checked="true" />
-            <RadioButton
-                android:id="@+id/rbBank"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bank"
-                android:layout_marginStart="16dp" />
-        </RadioGroup>
-
-        <!-- Purpose Spinner -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Purpose"
-            android:layout_marginTop="8dp" />
-        <Spinner
-            android:id="@+id/spPurpose"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp" />
-
-        <!-- Deposit Date Picker -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Deposit Date"
-            android:layout_marginTop="8dp" />
-        <EditText
-            android:id="@+id/etDepositDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="false"
-            android:clickable="true"
-            android:hint="YYYY-MM-DD" />
-
-        <!-- Note -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Note (Optional)"
-            android:layout_marginTop="8dp" />
-        <EditText
-            android:id="@+id/etNote"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter additional details"
-            android:lines="2" />
-
-        <!-- Save Button -->
         <Button
-            android:id="@+id/btnSave"
+            android:id="@+id/btnPromisedDonation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="24dp"
-            android:text="Save Donation (Offline Supported)" />
+            android:text="🤝  Promised Donation"
+            android:textSize="17sp"
+            android:minHeight="56dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Donations -->
+
+        <Button
+            android:id="@+id/btnDonations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📋  Donations"
+            android:textSize="17sp"
+            android:minHeight="56dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Promised Donations -->
+
+        <Button
+            android:id="@+id/btnPromisedDonations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📜  Promised Donations"
+            android:textSize="17sp"
+            android:minHeight="56dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Donor History -->
+
+        <Button
+            android:id="@+id/btnDonorHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👤  Donor History"
+            android:textSize="17sp"
+            android:minHeight="56dp"
+            android:layout_marginBottom="24dp" />
 
     </LinearLayout>
+
 </ScrollView>
