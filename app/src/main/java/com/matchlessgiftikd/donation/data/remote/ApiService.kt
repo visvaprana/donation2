@@ -200,12 +200,11 @@ interface ApiService {
     suspend fun fetchMetaData():
             Response<MetaDataResponse>
 
-
-    @GET("app/donor-summary")
-    suspend fun fetchDonorSummary(
-        @Query("mobile") mobile: String
-    ): Response<DonorSummaryResponse>
-
+@GET("app/donor-summary")
+suspend fun fetchDonorSummary(
+    @Query("donar_mobile") donarMobile: String,
+    @Query("donar_name") donarName: String? = null
+): Response<DonorSummaryResponse>
 
 
 
