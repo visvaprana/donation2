@@ -43,48 +43,45 @@ class SyncWorker(
 
             try {
 
-                val request =
-                    DonationRequest(
+              val request = DonationRequest(
 
-                        donarName =
-                            item.donorName,
+    devId = item.devId,
 
-                        donarMobile =
-                            item.donorMobile,
+    donarName = item.donorName,
 
-                        amount =
-                            item.amount,
+    donarMobile = item.donorMobile,
 
-                        purpose =
-                            item.purpose,
+    amount = item.amount,
 
-                        donationType =
-                            item.donationType,
+    purpose = item.purpose,
 
-                        district =
-                            item.districtId,
+    donationType = item.donationType,
 
-                        districtName =
-                            item.districtName,
+    district = item.districtId,
 
-                        thana =
-                            item.thana,
+    districtName = item.districtName,
 
-                        address =
-                            item.address,
+    thana = item.thana,
 
-                        counsellors =
-                            item.counsellors,
+    address = item.address,
 
-                        depositDate =
-                            item.depositDate,
+    counsellors = item.counsellors,
 
-                        note =
-                            item.note,
+    depositDate = item.depositDate,
 
-                        sendSms = 1
-                    )
+    note = item.note,
 
+    country = item.country,
+
+    city = item.city,
+
+    foreignMobile = item.foreignMobile,
+
+    processCommittedWithSms =
+        item.processCommittedWithSms,
+
+    sendSms = 1
+)
                 val response =
                     apiService.syncDonation(request)
 
@@ -138,52 +135,44 @@ class SyncWorker(
 
             try {
 
-                val request =
-                    PromisedDonationRequest(
+               val request = PromisedDonationRequest(
 
-                        donarName =
-                            item.donorName,
+    devId = item.devId,
 
-                        donarMobile =
-                            item.donorMobile,
+    donarName = item.donorName,
 
-                        amount =
-                            item.amount,
+    donarMobile = item.donorMobile,
 
-                        payAmount =
-                            item.payAmount,
+    amount = item.amount,
 
-                        purpose =
-                            item.purpose,
+    payAmount = item.payAmount,
 
-                        donationType =
-                            item.donationType,
+    purpose = item.purpose,
 
-                        district =
-                            item.districtId,
+    donationType = item.donationType,
 
-                        districtName =
-                            item.districtName,
+    district = item.districtId,
 
-                        thana =
-                            item.thana,
+    districtName = item.districtName,
 
-                        address =
-                            item.address,
+    thana = item.thana,
 
-                        counsellors =
-                            item.counsellors,
+    address = item.address,
 
-                        promiseDate =
-                            item.promiseDate,
+    counsellors = item.counsellors,
 
-                        note =
-                            item.note,
+    promiseDate = item.promiseDate,
 
-                        sendSms =
-                            item.sendSms
-                    )
+    note = item.note,
 
+    country = item.country,
+
+    city = item.city,
+
+    foreignMobile = item.foreignMobile,
+
+    sendSms = item.sendSms
+)
                 val response =
                     apiService
                         .syncPromisedDonation(request)
