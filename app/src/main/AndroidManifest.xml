@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:label="ISKCON Kheturi Dham"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Donation">
+        android:theme="@style/Theme.VolunteerForm">
 
         <!-- Dashboard / Home -->
         <activity
