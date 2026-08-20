@@ -76,6 +76,7 @@ class SyncWorker(
     city = item.city,
 
     foreignMobile = item.foreignMobile,
+                      promiseToken = item.promiseToken,
 
     processCommittedWithSms =
         item.processCommittedWithSms,
