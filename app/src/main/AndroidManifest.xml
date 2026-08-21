@@ -9,42 +9,36 @@
         android:theme="@style/Theme.VolunteerForm">
 
         <!-- Dashboard / Home -->
-        <activity
-            android:name=".DashboardActivity"
-            android:exported="true">
+   <activity
+    android:name=".DashboardActivity"
+    android:exported="true">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
 
-        </activity>
+</activity>
 
-        <!-- Regular Donation -->
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+<activity
+    android:name=".DonationActivity"
+    android:exported="false" />
 
-        <!-- Promised Donation -->
-        <activity
-            android:name=".PromisedDonationActivity"
-            android:exported="false" />
+<activity
+    android:name=".DonationListActivity"
+    android:exported="false" />
 
-        <!-- Donation List -->
-        <activity
-            android:name=".DonationListActivity"
-            android:exported="false" />
+<activity
+    android:name=".PromisedDonationActivity"
+    android:exported="false" />
 
-        <!-- Promised Donation List -->
-        <activity
-            android:name=".PromisedDonationListActivity"
-            android:exported="false" />
+<activity
+    android:name=".PromisedDonationListActivity"
+    android:exported="false" />
 
-        <!-- Donor History -->
-        <activity
-            android:name=".DonorHistoryActivity"
-            android:exported="false" />
-
+<activity
+    android:name=".DonorHistoryActivity"
+    android:exported="false" />
     </application>
 
 </manifest>
