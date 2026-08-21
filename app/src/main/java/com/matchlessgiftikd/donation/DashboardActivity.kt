@@ -59,10 +59,7 @@ class DashboardActivity : AppCompatActivity() {
         btnDonation.setOnClickListener {
 
             startActivity(
-                Intent(
-                    this,
-                    MainActivity::class.java
-                )
+               Intent(this, DonationActivity::class.java)
             )
         }
 
