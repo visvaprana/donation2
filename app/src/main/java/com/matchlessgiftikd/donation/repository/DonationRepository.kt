@@ -116,7 +116,11 @@ class DonationRepository(
     // META DATA
     // ============================================================
 
-  suspend fun syncMetaData(): Boolean {
+// ============================================================
+// META DATA
+// ============================================================
+
+suspend fun syncMetaData(): Boolean {
 
     return try {
 
@@ -125,10 +129,6 @@ class DonationRepository(
         if (response.isSuccessful && response.body() != null) {
 
             val metaData = response.body()!!
-
-            // ------------------------------------------------
-            // SAVE DISTRICTS
-            // ------------------------------------------------
 
             val districts = metaData.districts.map { district ->
 
@@ -140,11 +140,6 @@ class DonationRepository(
 
             db.metaDataDao()
                 .insertDistricts(districts)
-
-
-            // ------------------------------------------------
-            // SAVE THANAS
-            // ------------------------------------------------
 
             val thanas = metaData.thanas.map { thana ->
 
@@ -158,22 +153,31 @@ class DonationRepository(
             db.metaDataDao()
                 .insertThanas(thanas)
 
-
             true
 
         } else {
-
             false
         }
 
     } catch (e: Exception) {
 
         e.printStackTrace()
-
         false
     }
 }
 
+
+suspend fun getDistricts(): List<DistrictEntity> {
+    return db.metaDataDao().getAllDistricts()
+}
+
+
+suspend fun getThanasByDistrict(
+    districtId: Int
+): List<ThanaEntity> {
+    return db.metaDataDao()
+        .getThanasByDistrict(districtId)
+}
     // ============================================================
     // WORKMANAGER
     // ============================================================
