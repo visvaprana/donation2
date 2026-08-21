@@ -12,34 +12,37 @@ class DashboardActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_dashboard)
 
-        findViewById<Button>(R.id.btnDonation).setOnClickListener {
-            startActivity(
-                Intent(this, DonationActivity::class.java)
-            )
+
+        val donationButton = findViewById<Button>(R.id.btnDonation)
+        val promisedDonationButton = findViewById<Button>(R.id.btnPromisedDonation)
+        val donationsButton = findViewById<Button>(R.id.btnDonations)
+        val promisedDonationsButton = findViewById<Button>(R.id.btnPromisedDonations)
+        val donorHistoryButton = findViewById<Button>(R.id.btnDonorHistory)
+
+
+        donationButton.setOnClickListener {
+            startActivity(Intent(this, DonationActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btnPromisedDonation).setOnClickListener {
-            startActivity(
-                Intent(this, PromisedDonationActivity::class.java)
-            )
+
+        promisedDonationButton.setOnClickListener {
+            startActivity(Intent(this, PromisedDonationActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btnDonations).setOnClickListener {
-            startActivity(
-                Intent(this, DonationListActivity::class.java)
-            )
+
+        donationsButton.setOnClickListener {
+            startActivity(Intent(this, DonationListActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btnPromisedDonations).setOnClickListener {
-            startActivity(
-                Intent(this, PromisedDonationListActivity::class.java)
-            )
+
+        promisedDonationsButton.setOnClickListener {
+            startActivity(Intent(this, PromisedDonationListActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btnDonorHistory).setOnClickListener {
-            startActivity(
-                Intent(this, DonorHistoryActivity::class.java)
-            )
+
+        donorHistoryButton.setOnClickListener {
+            startActivity(Intent(this, DonorHistoryActivity::class.java))
         }
+
     }
 }
