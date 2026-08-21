@@ -22,9 +22,9 @@ class DashboardActivity : AppCompatActivity() {
 
         repository = DonationRepository(this)
 
-        // ----------------------------------------------------
+        // ========================================================
         // VIEWS
-        // ----------------------------------------------------
+        // ========================================================
 
         tvPending =
             findViewById(R.id.tvPending)
@@ -32,22 +32,29 @@ class DashboardActivity : AppCompatActivity() {
         val btnDonation =
             findViewById<Button>(R.id.btnDonation)
 
-        val btnPromised =
-            findViewById<Button>(R.id.btnPromised)
+        val btnPromisedDonation =
+            findViewById<Button>(
+                R.id.btnPromisedDonation
+            )
 
         val btnDonations =
-            findViewById<Button>(R.id.btnDonations)
+            findViewById<Button>(
+                R.id.btnDonations
+            )
 
-        val btnPromisedList =
-            findViewById<Button>(R.id.btnPromisedList)
+        val btnPromisedDonations =
+            findViewById<Button>(
+                R.id.btnPromisedDonations
+            )
 
         val btnDonorHistory =
-            findViewById<Button>(R.id.btnDonorHistory)
+            findViewById<Button>(
+                R.id.btnDonorHistory
+            )
 
-
-        // ----------------------------------------------------
-        // NEW REGULAR DONATION
-        // ----------------------------------------------------
+        // ========================================================
+        // NEW DONATION
+        // ========================================================
 
         btnDonation.setOnClickListener {
 
@@ -59,12 +66,11 @@ class DashboardActivity : AppCompatActivity() {
             )
         }
 
+        // ========================================================
+        // NEW PROMISED DONATION
+        // ========================================================
 
-        // ----------------------------------------------------
-        // NEW PROMISED / COMMITTED DONATION
-        // ----------------------------------------------------
-
-        btnPromised.setOnClickListener {
+        btnPromisedDonation.setOnClickListener {
 
             startActivity(
                 Intent(
@@ -74,10 +80,9 @@ class DashboardActivity : AppCompatActivity() {
             )
         }
 
-
-        // ----------------------------------------------------
+        // ========================================================
         // DONATION LIST
-        // ----------------------------------------------------
+        // ========================================================
 
         btnDonations.setOnClickListener {
 
@@ -89,12 +94,11 @@ class DashboardActivity : AppCompatActivity() {
             )
         }
 
-
-        // ----------------------------------------------------
+        // ========================================================
         // PROMISED DONATION LIST
-        // ----------------------------------------------------
+        // ========================================================
 
-        btnPromisedList.setOnClickListener {
+        btnPromisedDonations.setOnClickListener {
 
             startActivity(
                 Intent(
@@ -104,10 +108,9 @@ class DashboardActivity : AppCompatActivity() {
             )
         }
 
-
-        // ----------------------------------------------------
+        // ========================================================
         // DONOR HISTORY
-        // ----------------------------------------------------
+        // ========================================================
 
         btnDonorHistory.setOnClickListener {
 
@@ -119,30 +122,16 @@ class DashboardActivity : AppCompatActivity() {
             )
         }
 
-
-        // ----------------------------------------------------
-        // INITIAL SYNC STATUS
-        // ----------------------------------------------------
-
-        updatePendingCount()
-    }
-
-
-    // --------------------------------------------------------
-    // REFRESH WHEN RETURNING TO DASHBOARD
-    // --------------------------------------------------------
-
-    override fun onResume() {
-
-        super.onResume()
+        // ========================================================
+        // INITIAL PENDING COUNT
+        // ========================================================
 
         updatePendingCount()
     }
 
-
-    // --------------------------------------------------------
-    // PENDING SYNCHRONIZATION COUNT
-    // --------------------------------------------------------
+    // ============================================================
+    // UPDATE PENDING SYNCHRONIZATION COUNT
+    // ============================================================
 
     private fun updatePendingCount() {
 
@@ -161,6 +150,19 @@ class DashboardActivity : AppCompatActivity() {
                 tvPending.text =
                     "Pending synchronization: --"
             }
+        }
+    }
+
+    // ============================================================
+    // REFRESH WHEN RETURNING TO DASHBOARD
+    // ============================================================
+
+    override fun onResume() {
+
+        super.onResume()
+
+        if (::repository.isInitialized) {
+            updatePendingCount()
         }
     }
 }
