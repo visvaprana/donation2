@@ -28,9 +28,21 @@
             android:text="Donation Management"
             android:textSize="18sp"
             android:gravity="center"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="16dp" />
 
-        <!-- Donation -->
+        <!-- Synchronization Status -->
+
+        <TextView
+            android:id="@+id/tvPending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pending synchronization: 0"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- New Donation -->
 
         <Button
             android:id="@+id/btnDonation"
@@ -41,7 +53,7 @@
             android:minHeight="56dp"
             android:layout_marginBottom="12dp" />
 
-        <!-- Promised Donation -->
+        <!-- New Promised Donation -->
 
         <Button
             android:id="@+id/btnPromisedDonation"
@@ -52,7 +64,7 @@
             android:minHeight="56dp"
             android:layout_marginBottom="12dp" />
 
-        <!-- Donations -->
+        <!-- Donation List -->
 
         <Button
             android:id="@+id/btnDonations"
@@ -63,7 +75,7 @@
             android:minHeight="56dp"
             android:layout_marginBottom="12dp" />
 
-        <!-- Promised Donations -->
+        <!-- Promised Donation List -->
 
         <Button
             android:id="@+id/btnPromisedDonations"
