@@ -1,17 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ISKCON Kheturi Dham"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:padding="20dp">
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ISKCON KHETURI DHAM"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Donation Management"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/tvPending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pending synchronization: 0"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnDonation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💰  Donation"
+            android:textSize="17sp"
+            android:minHeight="56dp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnPromisedDonation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🤝  Promised Donation"
+            android:textSize="17sp"
+            android:minHeight="56dp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnDonations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📋  Donations"
+            android:textSize="17sp"
+            android:minHeight="56dp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnPromisedDonations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📜  Promised Donations"
+            android:textSize="17sp"
+            android:minHeight="56dp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnDonorHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👤  Donor History"
+            android:textSize="17sp"
+            android:minHeight="56dp"
+            android:layout_marginBottom="24dp" />
+
+    </LinearLayout>
+
+</ScrollView>
